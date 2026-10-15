@@ -48,5 +48,20 @@
         "id": 10,
         "html": "<div><b>Hello</i></div>",
         "expected": false
+    },
+    {
+        "id": 11,
+        "html": "",
+        "expected": true
+    },
+    {
+        "id": 12,
+        "html": "<br><img src='photo.jpg'><hr>",
+        "expected": true
+    },
+    {
+        "id": 13,
+        "html": "</div>",
+        "expected": false
     }
 ]
