@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "html": "<html><body><b>Hello</b></body></html>",
+        "expected": true
+    },
+    {
+        "id": 2,
+        "html": "<div><p>Hello</p></div>",
+        "expected": true
+    },
+    {
+        "id": 3,
+        "html": "<ul><li>One</li><li>Two</li></ul>",
+        "expected": true
+    },
+    {
+        "id": 4,
+        "html": "<html><head><title>Test</title></head><body></body></html>",
+        "expected": true
+    },
+    {
+        "id": 5,
+        "html": "<div><span>Text</span></div>",
+        "expected": true
+    },
+    {
+        "id": 6,
+        "html": "<div><b>Hello</div></b>",
+        "expected": false
+    },
+    {
+        "id": 7,
+        "html": "<html><body></html></body>",
+        "expected": false
+    },
+    {
+        "id": 8,
+        "html": "<div><p>Hello</div>",
+        "expected": false
+    },
+    {
+        "id": 9,
+        "html": "<div><span>Text</div></span>",
+        "expected": false
+    },
+    {
+        "id": 10,
+        "html": "<div><b>Hello</i></div>",
+        "expected": false
+    }
+]
