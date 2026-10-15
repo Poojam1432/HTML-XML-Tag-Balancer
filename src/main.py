@@ -15,6 +15,8 @@ def main():
         print("IMBALANCED")
         print("Error:", result["error"])
 
+    print("Opening tags processed:", result["opening_tags_count"])
+
 
 if __name__ == "__main__":
     main()

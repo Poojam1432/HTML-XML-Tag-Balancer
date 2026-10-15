@@ -11,6 +11,7 @@ VOID_TAGS = {
 
 
 def check_balance(html):
+    opening_tags_count = 0
     stack = Stack()
 
     pattern = r"<!--.*?-->|<![^>]*>|<\s*(/?)\s*([a-zA-Z][a-zA-Z0-9:-]*)\b[^>]*>"
@@ -28,8 +29,7 @@ def check_balance(html):
         if is_closing:
             if stack.is_empty():
                 return {
-                    "balanced": False,
-                    "error": f"Unexpected closing tag </{tag}>"
+                "balanced": False,"error": f"Unexpected closing tag </{tag}>","opening_tags_count": opening_tags_count
                 }
 
             opening_tag = stack.peek()
@@ -40,8 +40,10 @@ def check_balance(html):
                     "error": (
                         f"Closing tag </{tag}> does not match "
                         f"opening tag <{opening_tag}>"
-                    )
+                    ),
+                    "opening_tags_count": opening_tags_count
                 }
+            
 
             stack.pop()
 
@@ -50,14 +52,17 @@ def check_balance(html):
                 continue
 
             stack.push(tag)
+            opening_tags_count += 1
 
     if not stack.is_empty():
         return {
             "balanced": False,
-            "error": f"Unclosed tag <{stack.peek()}>"
+            "error": f"Unclosed tag <{stack.peek()}>",
+            "opening_tags_count": opening_tags_count
         }
 
     return {
         "balanced": True,
-        "error": None
-    }
+        "error": None,
+        "opening_tags_count": opening_tags_count
+}
