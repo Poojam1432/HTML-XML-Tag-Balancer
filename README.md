@@ -43,3 +43,22 @@ HTML-XML-Tag-Balancer/
 ├── tests/
 │   └── test_pda.py
 └── README.md
+## 10. Test Cases
+
+The application has been tested using the following inputs:
+
+| Test Case | Input | Expected Result |
+|---|---|---|
+| 1 | `<div><p>Hello</p></div>` | Balanced |
+| 2 | `<div><b>Hello</div></b>` | Imbalanced |
+| 3 | `<div><p>Hello</div>` | Imbalanced |
+| 4 | `</div>` | Imbalanced |
+| 5 | Empty input | Balanced |
+| 6 | `<div>Hello<br><img src="photo.jpg"><hr></div>` | Balanced |
+
+Automated tests are also available in the `tests` folder and use the dataset in `dataset/html_samples.json`.
+
+Run the automated tests with:
+
+```bash
+py -m pytest tests/test_pda.py -v
